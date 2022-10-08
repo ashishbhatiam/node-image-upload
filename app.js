@@ -7,15 +7,19 @@ const app = express()
 // connectDB
 const connectDB = require('./db/connect')
 
+// router
+const productRouter = require('./routes/productRoutes')
+
 // error handler
 const notFoundMiddleware = require('./middleware/not-found')
 const errorHandlerMiddleware = require('./middleware/error-handler')
 
-app.get('/', (req, res) => {
-  res.send('<h1>Node Product Upload</h1>')
-})
+app.use(express.json())
 
-// middleware
+// Route Path Middleware
+app.use('/api/v1/products', productRouter)
+
+// Custom middleware
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
 
