@@ -12,7 +12,7 @@ const notFoundMiddleware = require('./middleware/not-found')
 const errorHandlerMiddleware = require('./middleware/error-handler')
 
 app.get('/', (req, res) => {
-  res.send('<h1>Node Image Upload</h1>')
+  res.send('<h1>Node Product Upload</h1>')
 })
 
 // middleware

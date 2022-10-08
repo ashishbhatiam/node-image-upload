@@ -1,3 +1,3 @@
-# Node Image-Upload-API
+# Node Product-Upload-API
 
-    Image Upload API using NodeJS
+    Product Upload API using NodeJS
