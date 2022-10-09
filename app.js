@@ -4,6 +4,8 @@ require('express-async-errors')
 const express = require('express')
 const app = express()
 
+const expressFileUpload = require('express-fileupload')
+
 // connectDB
 const connectDB = require('./db/connect')
 
@@ -14,7 +16,9 @@ const productRouter = require('./routes/productRoutes')
 const notFoundMiddleware = require('./middleware/not-found')
 const errorHandlerMiddleware = require('./middleware/error-handler')
 
+app.use(express.static('./localFiles'))
 app.use(express.json())
+app.use(expressFileUpload())
 
 // Route Path Middleware
 app.use('/api/v1/products', productRouter)
