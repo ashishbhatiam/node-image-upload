@@ -6,9 +6,20 @@ const { BadRequestError } = require('../errors')
 
 const uploadProductImage = async (req, res) => {
   if (!req.files || !req.files.image) {
-    throw new BadRequestError('Please provide product image.')
+    throw new BadRequestError('No file Uploaded.')
   }
   const productImage = req.files.image
+  if (!productImage.mimetype.startsWith('image')) {
+    throw new BadRequestError('Please Upload Image type file.')
+  }
+
+  const maxSize = 1024 * 2048
+  if (productImage.size > maxSize) {
+    throw new BadRequestError(
+      `Please Upload Image smaller than ${formatBytes(maxSize)}.`
+    )
+  }
+
   const imagePath = path.join(
     __dirname,
     '../localFiles/uploads/',
