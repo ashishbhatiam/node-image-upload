@@ -3,14 +3,14 @@ const productRouter = express.Router()
 
 const {
   createProduct,
-  getAllProducts
+  getAllProducts,
+  createProductLocal
 } = require('../controllers/productController')
-const { uploadProductImage } = require('../controllers/uploadsController')
 
 productRouter
   .route('/')
   .post(createProduct)
   .get(getAllProducts)
-productRouter.route('/uploads').post(uploadProductImage)
+productRouter.route('/local').post(createProductLocal)
 
 module.exports = productRouter
